@@ -66,7 +66,15 @@ window.addEventListener("load", function (event) {
     ctx.clearRect(0,0,c.width, c.height);
     let shapeToRemove = shapes.pop();
     for (let eachShape of shapes){
-       //
+       if (eachShape.name == "Circle"){
+           eachShape.drawCircle()
+       }
+       else if (eachShape.name == "Rectangle"){
+           eachShape.drawRectangle()
+       }
+       else if (eachShape.name == "Triangle"){
+           eachShape.drawTriangle()
+       }
     }
   });
 
