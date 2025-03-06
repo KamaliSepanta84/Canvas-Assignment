@@ -66,7 +66,7 @@ window.addEventListener("load", function (event) {
     ctx.clearRect(0,0,c.width, c.height);
     let shapeToRemove = shapes.pop();
     for (let eachShape of shapes){
-       
+       //
     }
   });
 
