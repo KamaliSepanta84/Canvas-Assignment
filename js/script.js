@@ -16,6 +16,10 @@ window.addEventListener("load", function (event) {
   let rectangleRange = document.getElementById("rectangle-range");
   let triangleRange = document.getElementById("triangle-range");
 
+  let circleColor = document.getElementById("circle-color");
+  let rectangleColor = document.getElementById("rectangle-color");
+  let triangleColor = document.getElementById("triangle-color");
+
   circle.addEventListener("click", function(event){
     shape = "circle";
   });
@@ -36,7 +40,7 @@ window.addEventListener("load", function (event) {
     else if (shape == "circle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Circle(clickX,clickY,circleRange.value,"green",ctx);
+        let newShape = new Circle(clickX, clickY, circleRange.value, circleColor.value,ctx);
         newShape.drawCircle();
         shapes.push(newShape);
         console.log(shapes);
@@ -45,7 +49,7 @@ window.addEventListener("load", function (event) {
     else if (shape == "triangle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Triangle(clickX,clickY,triangleRange.value, triangleRange.value,"blue",ctx);
+        let newShape = new Triangle(clickX, clickY, triangleRange.value, triangleRange.value, triangleColor.value, ctx);
         newShape.drawTriangle();
         shapes.push(newShape);
         console.log(shapes);
@@ -55,7 +59,7 @@ window.addEventListener("load", function (event) {
     else if (shape == "rectangle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Rectangle(clickX,clickY,rectangleRange.value, rectangleRange.value,"red",ctx);
+        let newShape = new Rectangle(clickX, clickY, rectangleRange.value, rectangleRange.value, rectangleColor.value, ctx);
         newShape.drawRectangle();
         shapes.push(newShape);
         console.log(shapes);
