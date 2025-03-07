@@ -12,43 +12,103 @@ html{
     margin:1%;
 }
 body {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     height: 100%;
     background-color: rgb(74, 74, 74);
 }
 h1{
     color: white;
 }
-#designButtons{
-    width: 80%;
-    height: 5%;
+
+#designButtons-container{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2%;
+    justify-content: space-between;
+    gap: 100px;
+    margin: 20px 0;
 }
-#designButtons > button{
-    width: 20%;
-    height: 100%;
-    border: 2px solid white;
-    border-radius: 10px;
-    font-size: 2vw;
+
+#circle-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#circle-container button{
+    width: 100%;
+    font-size: 30px;
     background-color: rgb(74, 74, 74);
+    box-shadow: none;
     color: white;
-    transition: all 0.3s ease-in-out;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 10px;
 }
 
-#designButtons > button:hover,#designButtons > button:focus {
-    background-color: white;
+#rectangle-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#rectangle-container button{
+    width: 100%;
+    font-size: 30px;
+    background-color: rgb(74, 74, 74);
+    box-shadow: none;
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
+#triangle-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#triangle-container button{
+    width: 100%;
+    font-size: 30px;
+    background-color: rgb(74, 74, 74);
+    box-shadow: none;
+    color: white;
+    padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#undoButton{
+    font-size: 30px;
+    background-color: rgb(74, 74, 74);
+    box-shadow: none;
+    color: white;
+    padding: 0 10px;
+    border: 1px solid white;
+    height: 65%;
+    border-radius: 10px;
+}
+
+#clearButton{
+    font-size: 30px;
+    background-color: rgb(74, 74, 74);
+    box-shadow: none;
+    color: white;
+    padding: 0 10px;
+    border: 1px solid white;
+    height: 65%;
+    border-radius: 10px;
+}
+
+input[type=range]{
+    margin-top: 10px;
+}
+
+#circle-container button:hover, #rectangle-container button:hover,
+ #triangle-container button:hover, #clearButton:hover, 
+ #undoButton:hover{
     color: black;
-
-}
-
-.active{
     background-color: white;
-    color: black;
-}
+ }

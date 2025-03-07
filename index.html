@@ -13,12 +13,24 @@
 
   <body>
     <h1>Canvas Test Bed</h1>
-    <canvas id="testCanvas" width = 1200 height= 600></canvas>
+    <canvas id="testCanvas" width = 1024 height= 512></canvas>
     <br/>
-    <div id="designButtons">
-      <button id="circle">Circle</button>
-      <button id="rectangle">Rectangle</button>
-      <button id="triangle">Triangle</button>
+    <div id="designButtons-container">
+      <div id="circle-container">
+        <button id="circle">Circle</button>
+        <input type="range" min="5", max="100">
+      </div>
+
+      <div id="rectangle-container">
+        <button id="rectangle">Rectangle</button>
+        <input type="range" min="5", max="100">
+      </div>
+
+      <div id="triangle-container">
+        <button id="triangle">Triangle</button>
+        <input type="range" min="5", max="100">
+      </div>
+
       <button id="undoButton">Undo</button>
       <button id = "clearButton">Clear</button>
     </div>
