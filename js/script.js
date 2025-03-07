@@ -12,6 +12,10 @@ window.addEventListener("load", function (event) {
   let triangle = document.getElementById("triangle");
   let rectangle = document.getElementById("rectangle");
 
+  let circleRange = document.getElementById("circle-range");
+  let rectangleRange = document.getElementById("rectangle-range");
+  let triangleRange = document.getElementById("triangle-range");
+
   circle.addEventListener("click", function(event){
     shape = "circle";
   });
@@ -32,7 +36,7 @@ window.addEventListener("load", function (event) {
     else if (shape == "circle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Circle(clickX,clickY,80,"green",ctx);
+        let newShape = new Circle(clickX,clickY,circleRange.value,"green",ctx);
         newShape.drawCircle();
         shapes.push(newShape);
         console.log(shapes);
@@ -41,7 +45,7 @@ window.addEventListener("load", function (event) {
     else if (shape == "triangle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Triangle(clickX,clickY,100,100,"blue",ctx);
+        let newShape = new Triangle(clickX,clickY,triangleRange.value, triangleRange.value,"blue",ctx);
         newShape.drawTriangle();
         shapes.push(newShape);
         console.log(shapes);
@@ -51,7 +55,7 @@ window.addEventListener("load", function (event) {
     else if (shape == "rectangle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Rectangle(clickX,clickY,50,50,"red",ctx);
+        let newShape = new Rectangle(clickX,clickY,rectangleRange.value, rectangleRange.value,"red",ctx);
         newShape.drawRectangle();
         shapes.push(newShape);
         console.log(shapes);
@@ -76,6 +80,14 @@ window.addEventListener("load", function (event) {
            eachShape.drawTriangle()
        }
     }
+  });
+
+  let buttonList = document.querySelectorAll(".btn");
+  buttonList.forEach((btn)=>{
+      btn.addEventListener("click", function(event){
+         document.querySelector('.btn-active')?.classList.remove('btn-active');
+         btn.classList.add('btn-active');
+      });
   });
 
 });

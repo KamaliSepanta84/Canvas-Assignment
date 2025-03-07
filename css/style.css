@@ -45,6 +45,7 @@ h1{
     padding: 5px 10px;
     border: 1px solid white;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 #rectangle-container{
@@ -61,6 +62,7 @@ h1{
     padding: 5px 10px;
     border: 1px solid white;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 
@@ -78,6 +80,7 @@ h1{
     padding: 5px 10px;
     border: 1px solid white;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 #undoButton{
@@ -89,6 +92,7 @@ h1{
     border: 1px solid white;
     height: 65%;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 #clearButton{
@@ -100,6 +104,7 @@ h1{
     border: 1px solid white;
     height: 65%;
     border-radius: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 input[type=range]{

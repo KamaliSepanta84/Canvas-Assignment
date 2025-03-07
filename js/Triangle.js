@@ -9,15 +9,17 @@ class Triangle {
     this.name = "Triangle";
   }
 
-  drawTriangle() {
+drawTriangle() {
+    let height = (Math.sqrt(3) / 2) * this.width; 
     this.ctx.fillStyle = this.color;
     this.ctx.beginPath();
-    this.ctx.moveTo(this.x, this.y);
-    this.ctx.lineTo(this.x + this.width / 2, this.y - this.height);
-    this.ctx.lineTo(this.x + this.width, this.y);
+    this.ctx.moveTo(this.x, this.y); 
+    this.ctx.lineTo(this.x - this.width / 2, this.y + height); 
+    this.ctx.lineTo(this.x + this.width / 2, this.y + height); 
     this.ctx.closePath();
     this.ctx.fill();
-  }
+}
+
 
   clearTriangle() {
     this.ctx.fillStyle = "white";
