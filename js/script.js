@@ -20,7 +20,8 @@ window.addEventListener("load", function (event) {
   let rectangleColor = document.getElementById("rectangle-color");
   let triangleColor = document.getElementById("triangle-color");
 
-  let prevShapes = JSON.parse(localStorage.userShapes);
+  let prevShapes = JSON.parse(localStorage.getItem('userShapes') || '[]');
+
   for (let eachShape of prevShapes) {
     let newShape;
     if (eachShape.name === "Circle") {
