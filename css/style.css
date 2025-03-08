@@ -122,3 +122,31 @@ input[type=range]{
      width: 100%;
      margin-top: 10px;
 }
+.scale-container{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+}
+.scale-container > input{
+    -webkit-appearance: none;
+    background: #f7b801;
+    height: 10px;
+    border-radius: 5px;
+    width: 50%;
+    margin-bottom: 5px;
+
+}
+.scale-container >input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: white;
+    cursor: pointer;
+    border-radius: 10px;
+}

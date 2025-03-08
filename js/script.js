@@ -20,6 +20,24 @@ window.addEventListener("load", function (event) {
   let rectangleColor = document.getElementById("rectangle-color");
   let triangleColor = document.getElementById("triangle-color");
 
+  let prevShapes = JSON.parse(localStorage.userShapes);
+  for (let eachShape of prevShapes) {
+    let newShape;
+    if (eachShape.name === "Circle") {
+      newShape = new Circle(eachShape.x, eachShape.y, eachShape.radius, eachShape.color, ctx);
+      newShape.drawCircle();
+    } else if (eachShape.name === "Rectangle") {
+      newShape = new Rectangle(eachShape.x, eachShape.y, eachShape.width, eachShape.height, eachShape.color, ctx);
+      newShape.drawRectangle();
+    } else if (eachShape.name === "Triangle") {
+      newShape = new Triangle(eachShape.x, eachShape.y, eachShape.width, eachShape.height, eachShape.color, ctx);
+      newShape.drawTriangle();
+    }
+    if (newShape) {
+      shapes.push(newShape);
+    }
+  }
+
   circle.addEventListener("click", function(event){
     shape = "circle";
   });
@@ -32,47 +50,49 @@ window.addEventListener("load", function (event) {
 
   c.addEventListener("click", function(event){
 
-
     if (!shape) {
-        alert("You have to choose a shape first!");
-    }
 
+    }
     else if (shape == "circle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
         let newShape = new Circle(clickX, clickY, circleRange.value, circleColor.value,ctx);
         newShape.drawCircle();
         shapes.push(newShape);
-        console.log(shapes);
+        localStorage.userShapes = JSON.stringify(shapes);
+        console.log(localStorage.userShapes);
     }
-
     else if (shape == "triangle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Triangle(clickX, clickY, triangleRange.value, triangleRange.value, triangleColor.value, ctx);
+        let newShape = new Triangle(clickX, clickY -triangleRange.value/2, triangleRange.value, triangleRange.value, triangleColor.value, ctx);
         newShape.drawTriangle();
         shapes.push(newShape);
-        console.log(shapes);
+        localStorage.userShapes = JSON.stringify(shapes);
+        console.log(localStorage.userShapes);
 
     }
-
     else if (shape == "rectangle") {
         clickX = event.pageX - this.offsetLeft;
         clickY = event.pageY - this.offsetTop;
-        let newShape = new Rectangle(clickX, clickY, rectangleRange.value, rectangleRange.value, rectangleColor.value, ctx);
+        let newShape = new Rectangle(clickX - rectangleRange.value/2, clickY -rectangleRange.value/2, rectangleRange.value, rectangleRange.value, rectangleColor.value, ctx);
         newShape.drawRectangle();
         shapes.push(newShape);
-        console.log(shapes);
+        localStorage.userShapes = JSON.stringify(shapes);
+        console.log(localStorage.userShapes);
     }
   })
 
   clearBtn.addEventListener("click", function(event){
     ctx.clearRect(0,0,c.width, c.height);
+    shapes = [];
+    localStorage.userShapes = JSON.stringify(shapes);
   });
 
   undoBtn.addEventListener("click", function(event){
     ctx.clearRect(0,0,c.width, c.height);
-    let shapeToRemove = shapes.pop();
+    shapes.pop();
+    localStorage.userShapes = JSON.stringify(shapes);
     for (let eachShape of shapes){
        if (eachShape.name == "Circle"){
            eachShape.drawCircle()
