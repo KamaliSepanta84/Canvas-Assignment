@@ -20,18 +20,41 @@ window.addEventListener("load", function (event) {
   let rectangleColor = document.getElementById("rectangle-color");
   let triangleColor = document.getElementById("triangle-color");
 
-  let prevShapes = JSON.parse(localStorage.getItem('userShapes') || '[]');
+  let prevShapes = JSON.parse(localStorage.getItem("userShapes") || "[]");
 
+  /**
+   * redraws user's previous creation on canvas when they login
+   */
   for (let eachShape of prevShapes) {
     let newShape;
     if (eachShape.name === "Circle") {
-      newShape = new Circle(eachShape.x, eachShape.y, eachShape.radius, eachShape.color, ctx);
+      newShape = new Circle(
+        eachShape.x,
+        eachShape.y,
+        eachShape.radius,
+        eachShape.color,
+        ctx
+      );
       newShape.drawCircle();
     } else if (eachShape.name === "Rectangle") {
-      newShape = new Rectangle(eachShape.x, eachShape.y, eachShape.width, eachShape.height, eachShape.color, ctx);
+      newShape = new Rectangle(
+        eachShape.x,
+        eachShape.y,
+        eachShape.width,
+        eachShape.height,
+        eachShape.color,
+        ctx
+      );
       newShape.drawRectangle();
     } else if (eachShape.name === "Triangle") {
-      newShape = new Triangle(eachShape.x, eachShape.y, eachShape.width, eachShape.height, eachShape.color, ctx);
+      newShape = new Triangle(
+        eachShape.x,
+        eachShape.y,
+        eachShape.width,
+        eachShape.height,
+        eachShape.color,
+        ctx
+      );
       newShape.drawTriangle();
     }
     if (newShape) {
@@ -39,80 +62,100 @@ window.addEventListener("load", function (event) {
     }
   }
 
-  circle.addEventListener("click", function(event){
+  circle.addEventListener("click", function (event) {
     shape = "circle";
   });
-  triangle.addEventListener("click", function(event){
+  triangle.addEventListener("click", function (event) {
     shape = "triangle";
   });
-  rectangle.addEventListener("click", function(event){
+  rectangle.addEventListener("click", function (event) {
     shape = "rectangle";
   });
 
-  c.addEventListener("click", function(event){
-
+  /**
+   * If the user clicks on the shape labelled button, we call the draw method and push it to the shapes array
+   */
+  c.addEventListener("click", function (event) {
     if (!shape) {
+    } else if (shape == "circle") {
+      clickX = event.pageX - this.offsetLeft;
+      clickY = event.pageY - this.offsetTop;
+      let newShape = new Circle(
+        clickX,
+        clickY,
+        circleRange.value,
+        circleColor.value,
+        ctx
+      );
+      newShape.drawCircle();
+      shapes.push(newShape);
+      localStorage.userShapes = JSON.stringify(shapes);
+      console.log(localStorage.userShapes);
+    } else if (shape == "triangle") {
+      clickX = event.pageX - this.offsetLeft;
+      clickY = event.pageY - this.offsetTop;
+      let newShape = new Triangle(
+        clickX,
+        clickY - triangleRange.value / 2,
+        triangleRange.value,
+        triangleRange.value,
+        triangleColor.value,
+        ctx
+      );
+      newShape.drawTriangle();
+      shapes.push(newShape);
+      localStorage.userShapes = JSON.stringify(shapes);
+      console.log(localStorage.userShapes);
+    } else if (shape == "rectangle") {
+      clickX = event.pageX - this.offsetLeft;
+      clickY = event.pageY - this.offsetTop;
+      let newShape = new Rectangle(
+        clickX - rectangleRange.value / 2,
+        clickY - rectangleRange.value / 2,
+        rectangleRange.value,
+        rectangleRange.value,
+        rectangleColor.value,
+        ctx
+      );
+      newShape.drawRectangle();
+      shapes.push(newShape);
+      localStorage.userShapes = JSON.stringify(shapes);
+      console.log(localStorage.userShapes);
+    }
+  });
 
-    }
-    else if (shape == "circle") {
-        clickX = event.pageX - this.offsetLeft;
-        clickY = event.pageY - this.offsetTop;
-        let newShape = new Circle(clickX, clickY, circleRange.value, circleColor.value,ctx);
-        newShape.drawCircle();
-        shapes.push(newShape);
-        localStorage.userShapes = JSON.stringify(shapes);
-        console.log(localStorage.userShapes);
-    }
-    else if (shape == "triangle") {
-        clickX = event.pageX - this.offsetLeft;
-        clickY = event.pageY - this.offsetTop;
-        let newShape = new Triangle(clickX, clickY -triangleRange.value/2, triangleRange.value, triangleRange.value, triangleColor.value, ctx);
-        newShape.drawTriangle();
-        shapes.push(newShape);
-        localStorage.userShapes = JSON.stringify(shapes);
-        console.log(localStorage.userShapes);
-
-    }
-    else if (shape == "rectangle") {
-        clickX = event.pageX - this.offsetLeft;
-        clickY = event.pageY - this.offsetTop;
-        let newShape = new Rectangle(clickX - rectangleRange.value/2, clickY -rectangleRange.value/2, rectangleRange.value, rectangleRange.value, rectangleColor.value, ctx);
-        newShape.drawRectangle();
-        shapes.push(newShape);
-        localStorage.userShapes = JSON.stringify(shapes);
-        console.log(localStorage.userShapes);
-    }
-  })
-
-  clearBtn.addEventListener("click", function(event){
-    ctx.clearRect(0,0,c.width, c.height);
+  /**
+   * Clears canvas using clearRect and empties array along with local storage
+   */
+  clearBtn.addEventListener("click", function (event) {
+    ctx.clearRect(0, 0, c.width, c.height);
     shapes = [];
     localStorage.userShapes = JSON.stringify(shapes);
   });
 
-  undoBtn.addEventListener("click", function(event){
-    ctx.clearRect(0,0,c.width, c.height);
+  /**
+   * Reomves last shape from array, clears the canvas, and redraws all the prev shapes
+   */
+  undoBtn.addEventListener("click", function (event) {
+    ctx.clearRect(0, 0, c.width, c.height);
     shapes.pop();
     localStorage.userShapes = JSON.stringify(shapes);
-    for (let eachShape of shapes){
-       if (eachShape.name == "Circle"){
-           eachShape.drawCircle()
-       }
-       else if (eachShape.name == "Rectangle"){
-           eachShape.drawRectangle()
-       }
-       else if (eachShape.name == "Triangle"){
-           eachShape.drawTriangle()
-       }
+    for (let eachShape of shapes) {
+      if (eachShape.name == "Circle") {
+        eachShape.drawCircle();
+      } else if (eachShape.name == "Rectangle") {
+        eachShape.drawRectangle();
+      } else if (eachShape.name == "Triangle") {
+        eachShape.drawTriangle();
+      }
     }
   });
 
   let buttonList = document.querySelectorAll(".btn");
-  buttonList.forEach((btn)=>{
-      btn.addEventListener("click", function(event){
-         document.querySelector('.btn-active')?.classList.remove('btn-active');
-         btn.classList.add('btn-active');
-      });
+  buttonList.forEach((btn) => {
+    btn.addEventListener("click", function (event) {
+      document.querySelector(".btn-active")?.classList.remove("btn-active");
+      btn.classList.add("btn-active");
+    });
   });
-
 });
