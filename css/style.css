@@ -1,16 +1,26 @@
+/**
+ * Names: Sepanta Kamali, Umer Qureshi
+ * MacIDs: kamals19, quresu9
+ * Student Numbers: 400572915, 400562564
+ * Date: March 9th, 2025
+ * This is the CSS file of the entire project
+ */
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 html{
     height: 100%;
 }
+
 #testCanvas {
     background-color: white;
     margin:1%;
 }
+
 body {
     margin-top: 20px;
     display: flex;
@@ -20,6 +30,7 @@ body {
     height: 100%;
     background-color: rgb(74, 74, 74);
 }
+
 h1{
     color: white;
 }
@@ -64,7 +75,6 @@ h1{
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
 }
-
 
 #triangle-container{
     display: flex;
@@ -112,8 +122,8 @@ input[type=range]{
 }
 
 #circle-container button:hover, #rectangle-container button:hover,
- #triangle-container button:hover, #clearButton:hover, 
- #undoButton:hover{
+#triangle-container button:hover, #clearButton:hover, 
+#undoButton:hover{
     color: black;
     background-color: white;
  }
@@ -122,6 +132,7 @@ input[type=range]{
      width: 100%;
      margin-top: 10px;
 }
+
 .scale-container{
     margin-top: 5px;
     display: flex;
@@ -132,6 +143,7 @@ input[type=range]{
     font-weight: bold;
     color: white;
 }
+
 .scale-container > input{
     -webkit-appearance: none;
     background: #f7b801;
@@ -141,6 +153,7 @@ input[type=range]{
     margin-bottom: 5px;
 
 }
+
 .scale-container >input::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;

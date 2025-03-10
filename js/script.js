@@ -1,3 +1,10 @@
+/**
+ * Names: Sepanta Kamali, Umer Qureshi
+ * MacIDs: kamals19, quresu9
+ * Student Numbers: 400572915, 400562564
+ * Date: March 9th, 2025
+ * This is the main JavaScript file of the Project
+ */
 window.addEventListener("load", function (event) {
   let c = document.getElementById("testCanvas");
   let ctx = c.getContext("2d");
@@ -19,6 +26,7 @@ window.addEventListener("load", function (event) {
   let rectangleColor = document.getElementById("rectangle-color");
   let triangleColor = document.getElementById("triangle-color");
 
+  // Getting the shapes data from the local storage every time the page loads.
   let prevShapes = JSON.parse(localStorage.getItem("userShapes") || "[]");
 
   /**
@@ -62,6 +70,7 @@ window.addEventListener("load", function (event) {
     }
   }
 
+  // adding the event listeners for the shapes
   circle.addEventListener("click", function (event) {
     shape = "circle";
   });
@@ -73,7 +82,7 @@ window.addEventListener("load", function (event) {
   });
 
   /**
-   * If the user clicks on the shape labelled button, we call the draw method and push it to the shapes array
+   * If the user clicks on the canvas, we call the draw method, draw the shape, and push it to the shapes array
    */
   c.addEventListener("click", function (event) {
     if (!shape) {
@@ -151,6 +160,7 @@ window.addEventListener("load", function (event) {
     }
   });
 
+  // adding the active class to the active button
   let buttonList = document.querySelectorAll(".btn");
   buttonList.forEach((btn) => {
     btn.addEventListener("click", function (event) {

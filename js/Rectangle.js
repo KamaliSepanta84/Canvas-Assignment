@@ -1,3 +1,10 @@
+/**
+ * Names: Sepanta Kamali, Umer Qureshi
+ * MacIDs: kamals19, quresu9
+ * Student Numbers: 400572915, 400562564
+ * Date: March 9th, 2025
+ * This is the JavaScript file for the Rectangle class.
+ */
 class Rectangle {
   /**
    * Creates a new Rectangle object
