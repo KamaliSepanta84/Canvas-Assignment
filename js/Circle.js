@@ -12,7 +12,7 @@ class Circle {
     this.y = y; // Y position of the circle's center
     this.r = r; // Radius of the circle
     this.color = color; // Fill color of the circle
-    this.ctx = ctx; // Canvas rendering context
+    this.ctx = ctx || null; // Ensure ctx can be null for reloading from storage
     this.name = "Circle"; // Name identifier for the shape
   }
 
@@ -20,6 +20,7 @@ class Circle {
    * Draws the circle on the canvas
    */
   drawCircle() {
+    if (!this.ctx) return; // Ensure ctx is available before drawing
     this.ctx.beginPath();
     this.ctx.fillStyle = this.color; // Set fill color
     this.ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); // Draw circle
@@ -31,6 +32,7 @@ class Circle {
    * Clears the circle from the canvas by drawing over it with white
    */
   clearCircle() {
+    if (!this.ctx) return; // Ensure ctx is available before clearing
     this.ctx.fillStyle = "white"; // Set fill color to white (background)
     this.ctx.strokeStyle = "white"; // Set stroke color to white
     this.ctx.beginPath();
@@ -43,6 +45,7 @@ class Circle {
    * Draws only the border of the circle
    */
   drawBorder() {
+    if (!this.ctx) return; // Ensure ctx is available before drawing
     this.clearCircle(); // Clear the existing circle
     this.ctx.beginPath();
     this.ctx.strokeStyle = "black"; // Set border color to black

@@ -30,7 +30,7 @@ window.addEventListener("load", function (event) {
       newShape = new Circle(
         eachShape.x,
         eachShape.y,
-        eachShape.radius,
+        eachShape.r,
         eachShape.color,
         ctx
       );
@@ -58,6 +58,7 @@ window.addEventListener("load", function (event) {
     }
     if (newShape) {
       shapes.push(newShape);
+      localStorage.userShapes = JSON.stringify(shapes)
     }
   }
 
@@ -82,7 +83,7 @@ window.addEventListener("load", function (event) {
       let newShape = new Circle(
         clickX,
         clickY,
-        circleRange.value,
+        parseInt(circleRange.value),
         circleColor.value,
         ctx
       );
@@ -96,8 +97,8 @@ window.addEventListener("load", function (event) {
       let newShape = new Triangle(
         clickX,
         clickY - triangleRange.value / 2,
-        triangleRange.value,
-        triangleRange.value,
+        parseInt(triangleRange.value),
+        parseInt(triangleRange.value),
         triangleColor.value,
         ctx
       );
@@ -111,8 +112,8 @@ window.addEventListener("load", function (event) {
       let newShape = new Rectangle(
         clickX - rectangleRange.value / 2,
         clickY - rectangleRange.value / 2,
-        rectangleRange.value,
-        rectangleRange.value,
+        parseInt(rectangleRange.value),
+        parseInt(rectangleRange.value),
         rectangleColor.value,
         ctx
       );
