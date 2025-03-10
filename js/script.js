@@ -6,16 +6,15 @@ window.addEventListener("load", function (event) {
   let clickY;
   let shape;
 
+  // defining the DOM elements.
   let clearBtn = document.getElementById("clearButton");
   let undoBtn = document.getElementById("undoButton");
   let circle = document.getElementById("circle");
   let triangle = document.getElementById("triangle");
   let rectangle = document.getElementById("rectangle");
-
   let circleRange = document.getElementById("circle-range");
   let rectangleRange = document.getElementById("rectangle-range");
   let triangleRange = document.getElementById("triangle-range");
-
   let circleColor = document.getElementById("circle-color");
   let rectangleColor = document.getElementById("rectangle-color");
   let triangleColor = document.getElementById("triangle-color");
